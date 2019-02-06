@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="张雪冬的博客">
+    <meta name="keyword"  content="JS">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        HTML中关于JavaScript和dom的基础知识 - SnowEast的博客 | SnowEast&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>SnowEast</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript的工作方式"><span class="toc-text">JavaScript的工作方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript能做什么？"><span class="toc-text">JavaScript能做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在页面中增加JavaScript，怎么加？在那里加？"><span class="toc-text">在页面中增加JavaScript，怎么加？在那里加？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript如何与页面交互"><span class="toc-text">JavaScript如何与页面交互</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        HTML中关于JavaScript和dom的基础知识
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-01-05 16:04:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="JavaScript的工作方式"><a href="#JavaScript的工作方式" class="headerlink" title="JavaScript的工作方式"></a>JavaScript的工作方式</h2><p>1.编写</p>
+<p>编写HTML标记和JavaScript代码，并把他们放在文件中，比如说index.html和index.js （或者也可以都放在HTML文件中）</p>
+<p>2.加载</p>
+<p>浏览器获取并加载你的页面，从上到下解析你的内容。<br>遇到JavaScript时，浏览器会解析代码，检查它的正确性，然后执行代码。<br>浏览器还会建立HTML页面的一个内部模型，称为DOM。</p>
+<p>3.运行</p>
+<p>JavaScript继续执行，使用DOM检查页面、完成修改、从页面接受事件，或者要求浏览器从web服务器获取其他数据。</p>
+<h2 id="JavaScript能做什么？"><a href="#JavaScript能做什么？" class="headerlink" title="JavaScript能做什么？"></a>JavaScript能做什么？</h2><p>一旦有一个包含<code>&lt;script&gt;</code>元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经在开始编写代码了。JavaScript是一个完备的编程语言，用其他语言能做到的事情用JavaScript同样能做到，甚至还能做的更多，因为我们就在web页面内部编程！</p>
+<p>我们可以用JavaScript：</p>
+<ul>
+<li>建立一个语句（语句）</li>
+<li>重复做事情（循环）</li>
+<li>做出判断（条件）</li>
+<li>声明变量，赋值变量      </li>
+</ul>
+<blockquote>
+<p>命名变量要符合三个要求：<br>1.变量要以一个字母、下划线或者美元符开头。<br>2.然后可以使用任意多个字母、数字、下划线或美元符。<br>3.一定要避开JavaScript的所有保留字。</p>
+</blockquote>
+<ul>
+<li><p>构建表达式</p>
+<p>JavaScrit中表达式无处，不在一定要知道可以表达哪些内容：</p>
+<p>1).数值表达式</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">9</span>/<span class="number">5</span>) * tempC + <span class="number">32</span>;</span><br><span class="line">x - <span class="number">1</span>;</span><br><span class="line">Math.random() * <span class="number">10</span>;</span><br><span class="line"><span class="number">2.123</span> + <span class="number">3.2</span>;</span><br></pre></td></tr></table></figure>
+<p>2).布尔表达式</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> &gt; <span class="number">3</span><span class="comment">;</span></span><br><span class="line">startTime &gt; now<span class="comment">;</span></span><br><span class="line">tempF &lt; <span class="number">75</span><span class="comment">;</span></span><br><span class="line"><span class="attribute">pet</span> = <span class="string">"Duck"</span><span class="comment">;</span></span><br><span class="line"><span class="attribute">level</span> == <span class="number">4</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>3).串表达式</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"super"</span> + <span class="string">"cali"</span> + youKnowTheRest<span class="comment">;</span></span><br><span class="line"><span class="string">"March"</span> + <span class="string">"21"</span> + <span class="string">"st"</span><span class="comment">;</span></span><br><span class="line">p.innerHTML<span class="comment">;</span></span><br><span class="line">phoneNumber.<span class="keyword">substring(0,3);</span></span><br></pre></td></tr></table></figure>
+<p>4).其他表达式</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function () <span class="meta">&#123;...&#125;</span>;</span><br><span class="line">document.getElementById(<span class="string">"pink"</span>);</span><br><span class="line">new <span class="type">Array</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="在页面中增加JavaScript，怎么加？在那里加？"><a href="#在页面中增加JavaScript，怎么加？在那里加？" class="headerlink" title="在页面中增加JavaScript，怎么加？在那里加？"></a>在页面中增加JavaScript，怎么加？在那里加？</h2><p>要使用JavaScript，肯定必须把它增加到一个Web页面中。不过在哪里加呢？另外怎么加？我们已经知道有一个<code>&lt;script&gt;</code>元素，所以下面来看在哪里使用这个元素，另外它会如何影响页面中JavaScript的执行。向页面增加代码JavaScript的执行。向页面增加代码有三种不同的方式：</p>
+<p><strong>1.联机放在<code>&lt;head&gt;</code>元素中。</strong></p>
+<p>向页面增加代码时，最常见的方式就是在<code>&lt;head&gt;</code>部分放置一个<code>&lt;script&gt;</code>元素。在<code>&lt;head&gt;</code>元素中增加JavaScript代码时，一旦浏览器开始解析head部分就会执行这个代码（这会最先执行），然后才解析页面的其余部分。</p>
+<p><strong>2.通过引用一个单独的JavaScript文件来增加脚本。</strong></p>
+<p>还可以链接到一个包含JavaScript代码的单独文件。将这个文件的URL放在开始<code>&lt;script&gt;</code>标记的src属性中，另外一定要用<code>&lt;/script&gt;</code>结束这个脚本元素。如果链接到同一目录中的某个文件，可以只使用该文件名（无需提供完整的路径）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mycode.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.将代码增加到文档体中，可以作为内联代码，也可以作为一个单独文件链接。</strong></p>
+<p>同样有可用<code>&lt;script&gt;</code>直接引用或间接引用。</p>
+<h2 id="JavaScript如何与页面交互"><a href="#JavaScript如何与页面交互" class="headerlink" title="JavaScript如何与页面交互"></a>JavaScript如何与页面交互</h2><p>1.在浏览器中加载一个页面时，浏览器和解析 HTML，并创建文档的一个内部模型其中包含HTML标记中的所有元素。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fywx8ral7uj31a80t4wfj.jpg" alt="我们把他简称为DOM"></p>
+<p>2.JavaScript可以与DOM交互来访问元素以及元素中的内容。Javascript还可以使用DOM来创建或删除元素（当然还可以做很多其他事情）</p>
+<p>3.JavaScript修改了DOM时，浏览器会动态更新页面，所以你会看到页面上的新内容。</p>
+<p>document表示浏览器中的整个页面，它包含完整的DOM，所以可以让它做任何事情。</p>
+<ul>
+<li><p>比如查找有一个特定id的元素。</p>
+<p><code>var planet = document.getElementById(&quot;greenplanet&quot;)</code>;</p>
+<p>比如替换该id的内容。</p>
+<p><code>planet.innerHTML = &quot;Red Alert: hit by phaser fire!&quot;;</code></p>
+</li>
+<li><p>页面完全加载前不要打扰DOM</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> planet = <span class="built_in">document</span>.getElementById(<span class="string">"greenplanet"</span>);</span></span><br><span class="line"><span class="actionscript">    planet.innerHTML = <span class="string">"Red Alert: hit by phaser fire!"</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">windown.onload = init</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向DOM创建或增加元素</p>
+</li>
+<li><p>从DOM删除元素</p>
+</li>
+<li><p>获取和设置元素的属性</p>
+</li>
+</ul>
+<p>  总之，HTML的DNA由描述性标记构成，允许你描述构成页面的一组嵌套元素。另一面，JavaScript却是由纯算法性基因物质构成，主要用来描述计算。</p>
+<p>  虽然他们的基因有天壤之别，好在他们有共同之处：DOM。于是通过DOM，JavaScript就能和页面互相通信。而且通信的方法有很多种。而如今各种前端框架的盛行，就是事先搭建，包装好了底层的dom操作，让工程师更多关于业务逻辑。代码的工程繁琐度也再不断降低。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/danilex6624">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/SnowEastern">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/SnowEastern">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/xuedongZ">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://geekplux.com/">geekplux</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.knowledgeformen.com/">knowledgeformen</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://xuedong.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

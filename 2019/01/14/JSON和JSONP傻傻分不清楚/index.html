@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="张雪冬的博客">
+    <meta name="keyword"  content="JS">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JSON和JSONP傻傻分不清楚 - SnowEast的博客 | SnowEast&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes design </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>SnowEast</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON"><span class="toc-text">JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XML让位，JSON登场"><span class="toc-text">XML让位，JSON登场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON语法"><span class="toc-text">JSON语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON的规则"><span class="toc-text">JSON的规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSONP"><span class="toc-text">JSONP</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes design </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JSON和JSONP傻傻分不清楚
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-01-14 21:57:55</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <p>其实json和jsonp本质上都是字符串，只是jsonp是外层包裹了一层函数。</p>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON是JavaScript对象记法（JavaScript Object Notation），它有很多好处，规模、可读性等，还有另外一点：他是Web上最流行语言（JavaScript）的内置记法。JSON 是存储和交换文本信息的语法，类似 XML。但JSON 比 XML 更小、更快，更易解析。</p>
+<h3 id="XML让位，JSON登场"><a href="#XML让位，JSON登场" class="headerlink" title="XML让位，JSON登场"></a>XML让位，JSON登场</h3><p>曾几何时，我们都把XML当作救星，这是一种人类可读、机器可解析的数据格式，也是原本要支持世界上所有数据需求的数据格式。刚开始开发XMLhttpRequest时，XML确实是大家交互数据采用的方法。<br>XML 和所谓 HTML 的写法非常相似。XML 没有预定义的标签。在 HTML 中使用的标签（以及 HTML 的结构）是预定义的。HTML 文档只使用在 HTML 标准中定义过的标签。XML 允许创作者定义自己的标签和自己的文档结构。</p>
+<p>下面有这样一个资料：</p>
+<blockquote>
+<p>一个『名字』叫做多拉Ａ梦，身高『129.3』，体重『129.3』，喜欢的事物有吃『铜锣烧』和『机油』，以及『和小咪约会』的机器人。</p>
+</blockquote>
+<p>【用XML方式存储】：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">robot</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>多拉A梦<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">height</span>&gt;</span>129.3<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">weight</span>&gt;</span>129.3<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">hobby</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">food</span>&gt;</span>铜锣烧、机油<span class="tag">&lt;/<span class="name">food</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">relationship</span>&gt;</span>和小咪约会<span class="tag">&lt;/<span class="name">relationship</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">hobby</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">robot</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>不过这个世界日新月异，如今我们可以获取各种各样的数据格式(CSV、Excel、XML、JSON、yaml)。目前数据交互更多的是JSON请求。<br>JSON 是存储和交换文本信息的语法。类似 XML。JSON 比 XML 更小、更快，更易解析。<br>【用JSON方式存储】：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	“name” : “多拉<span class="type">A</span>梦”,</span><br><span class="line">	“height”: <span class="number">129.3</span>,</span><br><span class="line">	“weight”:<span class="number">129.3</span>,</span><br><span class="line">	“hobby”:&#123;</span><br><span class="line">		“food” : “铜锣烧、机油”,</span><br><span class="line">		“relationship” : “和小咪约会”</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>是不是易读多了呢。</p>
+<h3 id="JSON语法"><a href="#JSON语法" class="headerlink" title="JSON语法"></a>JSON语法</h3><p>JSON所表示的数据要么就是对象，要么就是数组。<br><a href="http://www.ruanyifeng.com/blog/2009/05/data_types_and_json.html" target="_blank" rel="noopener">从结构上看，所有的数据（data）最终都可以分解成三种类型</a>：</p>
+<ul>
+<li><p>第一种类型是标量（scalar），也就是一个单独的字符串（string）或数字（numbers），比如”北京”这个单独的词。</p>
+</li>
+<li><p>第二种类型是序列（sequence），也就是若干个相关的数据按照一定顺序并列在一起，又叫做数组（array）或列表（List），比如”北京，上海”。</p>
+</li>
+<li><p>第三种类型是映射（mapping），也就是一个名/值对（Name/value），即数据有一个名称，还有一个与之相对应的值，这又称作散列（hash）或字典（dictionary），比如”首都：北京”。</p>
+</li>
+</ul>
+<p>数据构成的最小单位原来如此简单！难怪在编程语言中，只要有了数组（array）和对象（object）就能够储存一切数据了。<br>JSON语法是javaScript语法的子集，javaScript用[]中括号来表示数组，用{}大括号来表示对象，JSON亦是如此。</p>
+<p>【JSON数组】：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var employees = [</span><br><span class="line">    &#123; <span class="string">"firstName"</span>:<span class="string">"Bill"</span> , <span class="string">"lastName"</span>:<span class="string">"Gates"</span> &#125;,</span><br><span class="line">    &#123; <span class="string">"firstName"</span>:<span class="string">"George"</span> , <span class="string">"lastName"</span>:<span class="string">"Bush"</span> &#125;,</span><br><span class="line">    &#123; <span class="string">"firstName"</span>:<span class="string">"Thomas"</span> , <span class="string">"lastName"</span>: <span class="string">"Carter"</span> &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure></p>
+<p>【JSON对象】：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line"></span><br><span class="line">    age: <span class="number">20</span>,</span><br><span class="line">    str: <span class="string">"xiaoming"</span>,</span><br><span class="line">    method: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        alert(<span class="string">"我爱学习"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>当然啦，数组可以包含对象，在对象中也可以包含数组。</p>
+<h3 id="JSON的规则"><a href="#JSON的规则" class="headerlink" title="JSON的规则"></a>JSON的规则</h3><p>JSON能够以非常简单的方式来描述数据结构，XML能做的它都能做，因此在跨平台方面两者完全不分伯仲。</p>
+<p>1、JSON只有两种数据类型描述符，大括号{}和方括号[]，其余英文冒号:是映射符，英文逗号,是分隔符，英文双引号””是定义符。</p>
+<p>2、大括号{}用来描述一组“不同类型的无序键值对集合”（每个键值对可以理解为OOP的属性描述），方括号[]用来描述一组“相同类型的有序数据集合”（可对应OOP的数组）。</p>
+<p>3、上述两种集合中若有多个子项，则通过英文逗号,进行分隔。</p>
+<p>4、键值对以英文冒号:进行分隔，并且建议键名都加上英文双引号””，以便于不同语言的解析。</p>
+<p>5、JSON内部常用数据类型无非就是字符串、数字、布尔、日期、null 这么几个，字符串必须用双引号引起来，其余的都不用，日期类型比较特殊，这里就不展开讲述了，只是建议如果客户端没有按日期排序功能需求的话，那么把日期时间直接作为字符串传递就好，可以省去很多麻烦。</p>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。</p>
+<p>它的基本思想是，网页通过添加一个<code>&lt;script&gt;</code>元素，向服务器请求JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。</p>
+<p>首先，网页动态插入<code>&lt;script&gt;</code>元素，由它向跨源网址发出请求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addScriptTag</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</span><br><span class="line">  script.setAttribute(<span class="string">"type"</span>,<span class="string">"text/javascript"</span>);</span><br><span class="line">  script.src = src;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  addScriptTag(<span class="string">'http://example.com/ip?callback=foo'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Your public IP address is: '</span> + data.ip);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面代码通过动态添加<code>&lt;script&gt;</code>元素，向服务器example.com发出请求。注意，该请求的查询字符串有一个callback参数，用来指定回调函数的名字，这对于JSONP是必需的。</p>
+<p>服务器收到这个请求以后，会将数据放在回调函数的参数位置返回。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo(&#123;</span><br><span class="line">  <span class="string">"ip"</span>: <span class="string">"8.8.8.8"</span></span><br><span class="line">&#125;)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>由于<code>&lt;script&gt;</code>元素请求的脚本，直接作为代码运行。这时，只要浏览器定义了foo函数，该函数就会立即调用。作为参数的JSON数据被视为JavaScript对象，而不是字符串，因此避免了使用JSON.parse的步骤。</p>
+<p>以上。</p>
+<hr>
+<p>参考文章：<br>1.<a href="https://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html" target="_blank" rel="noopener">【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例</a><br>2.<a href="https://ithelp.ithome.com.tw/articles/10203632?sc=iThelpR" target="_blank" rel="noopener">基本資料格式: XML 和 JSON</a><br>3.<a href="https://blog.csdn.net/u011240877/article/details/46651249" target="_blank" rel="noopener">面试问题之：JSON是什么？</a><br>4.<a href="https://blog.csdn.net/Yeoman92/article/details/54924930" target="_blank" rel="noopener">JSON与JS对象的区别</a><br>5.<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">浏览器同源政策及其规避方法</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/danilex6624">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/SnowEastern">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/SnowEastern">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/xuedongZ">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://geekplux.com/">geekplux</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.knowledgeformen.com/">knowledgeformen</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://xuedong.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

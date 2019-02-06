@@ -9,6 +9,7 @@ html {
 }
 body {
   margin-left: calc(100vw - 100%) !important;
+  -webkit-text-size-adjust: none;
 }
 .red {
   color: red;
@@ -632,23 +633,24 @@ body {
   color: #404040;
   font-size: 14px;
   line-height: 30px;
-  text-indent: 2em;
+  text-indent: 0;
   letter-spacing: 1px;
 }
 .post-content p img {
   width: 80%;
-}
+} 
 .post-content ul,
 .post-content ol {
-  padding-left: 2em;
+  padding-left: 1em;
+  margin:0;
 }
 .post-content ul li,
 .post-content ol li {
   list-style: none;
   color: #404040;
   font-size: 14px;
-  line-height: 30px;
-  text-indent: 2em;
+  line-height: 29px;
+  text-indent: 0;
   letter-spacing: 1px;
   margin-bottom: 5px;
   margin-top: 5px;
